@@ -7,11 +7,45 @@
  */
 /*include './da/LinkedList.php';
 include './da/LinkedNode.php';*/
+$arr1 = [8,2,6,3,20,1,9,11,7,5];
+$arr2 = [2,3,1];
+function quick_sort(&$arr,$start,$end){
+    if($start>=$end){
+        return;
+    }
+    $key = $start;
+    $tmp = $arr[$key];
+    for($i=$start+1;$i<$end;$i++){
+        if($arr[$i]<$tmp){
+            $tmp1 = $arr[$i];
+            $arr[$i] = $arr[$key];
+            $arr[$key] = $tmp1;
+            $key++;
+        }
+    }
+    $tmp = $arr[$key];
+    $arr[$start] = $arr[$key];
+    $arr[$key] = $tmp;
+   quick_sort($arr,$key+1,$end);
+   quick_sort($arr,$start,$key-1);
 
+}
+quick_sort($arr1,0,count($arr1));
+print_r($arr1);
+exit();
 include "./da/TreeNode.php";
-include "./da/BinarySearchTree.php";
-$tree = new BinarySearchTree(7);
+include "./da/MaxHeap.php";
+$tree = new MaxHeap(1);
 
+$tree->add(9);
+$tree->add(5);
+$tree->add(4);
+$tree->add(8);
+$tree->add(10);
+$tree->add(3);
+var_dump($tree->data);
+
+exit();
 $tree->add(5);
 $tree->add(10);
 
